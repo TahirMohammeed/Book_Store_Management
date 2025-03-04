@@ -1,0 +1,100 @@
+﻿@model Book_Store.Models.Order
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<br />
+<div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+        <div>
+            <!-- /.card -->
+            <!-- Horizontal Form -->
+            <div class="card card-danger">
+                <div class="card-header">
+                    <h3 class="card-title">Delete Order</h3>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body">
+                    <dl>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.TotalPrice)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.TotalPrice)$
+                        </dd>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.OrderDate)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.OrderDate)
+                        </dd>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.FullName)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.FullName)
+                        </dd>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.PhoneNumber)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.PhoneNumber)
+                        </dd>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.AddressDetail)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.AddressDetail)
+                        </dd>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.OrderStatus)
+                        </dt>
+                        <dd>
+
+
+                            @if (Model.OrderStatus == 0)
+                            {
+                                <p>Received</p>
+                            }
+                            @if (Model.OrderStatus == 1)
+                            {
+                                <p>Processing</p>
+
+                            }
+                            @if (Model.OrderStatus == 2)
+                            {
+                                <p>Shipped</p>
+
+                            }
+                            @if (Model.OrderStatus == 3)
+                            {
+                                <p>Cancelled</p>
+
+                            }
+                            @if (Model.OrderStatus == 4)
+                            {
+                                <p>Completed</p>
+
+                            }
+                        </dd>
+
+                    </dl>
+
+                    <form asp-action="Delete">
+                        <input type="hidden" asp-for="OrderId" />
+                        <input type="submit" value="Delete" class="btn btn-sm btn-danger" />
+                        <a asp-action="Index" class="btn btn-sm btn-info">Back to List</a>
+                    </form>
+                </div>
+
+                <!-- /.card-footer -->
+
+            </div>
+            <!-- /.card -->
+        </div>
+    </div>
+    <div class="col-md-3"></div>
+</div>

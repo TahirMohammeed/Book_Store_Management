@@ -1,0 +1,79 @@
+﻿@model Book_Store.Models.Book
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+<div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+        <div>
+            <!-- /.card -->
+            <!-- Horizontal Form -->
+            <div class="card card-info">
+                <div class="card-header">
+                    <h3 class="card-title">Details Book</h3>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body">
+                    <dl>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.BookName)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.BookName)
+                        </dd>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.BookPrice)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.BookPrice)$
+                        </dd>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.BookQty)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.BookQty)
+                        </dd>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.BookAuthor)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.BookAuthor)
+                        </dd>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.BookImage)
+                        </dt>
+                        <dd>
+                            <img src="~/images/uploads/bookImages/@Model.BookImage" style="width:50px;height:50px" />
+                        </dd>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.BookDesc)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.BookDesc)
+                        </dd>
+                        <dt>
+                            Category
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.FkCategory.CategoryName)
+                        </dd>
+                    </dl>
+
+                    <div>
+                    <a asp-action="Edit" asp-route-id="@Model.BookId" class="btn btn-sm btn-primary">Edit</a> 
+                    <a asp-action="Index" class="btn btn-sm btn-info">Back to List</a>
+                    </div>
+                </div>
+
+                <!-- /.card-footer -->
+
+            </div>
+            <!-- /.card -->
+        </div>
+    </div>
+    <div class="col-md-3"></div>
+</div>

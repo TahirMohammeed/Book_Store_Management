@@ -1,0 +1,103 @@
+﻿@model Book_Store.Models.Book
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+<br />
+<div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+           <!-- /.card -->
+    <!-- Horizontal Form -->
+    <div class="card card-success">
+        <div class="card-header">
+            <h3 class="card-title">Edit Book</h3>
+        </div>
+        <!-- /.card-header -->
+        <!-- form start -->
+        <form class="form-horizontal" asp-action="Edit" enctype="multipart/form-data">
+            <input type="hidden" asp-for="BookId" />
+            <input type="hidden" asp-for="BookImage" />
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="card-body">
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">Select Category</label>
+                    <div class="col-sm-9">
+                        <select asp-for="FkCategoryId" class="form-control" asp-items="ViewBag.FkCategoryId"></select>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">Book Name</label>
+                    <div class="col-sm-9">
+                        <input asp-for="BookName" class="form-control" />
+                        <span asp-validation-for="BookName" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">Book Price</label>
+                    <div class="col-sm-9">
+                        <input asp-for="BookPrice" class="form-control" />
+                        <span asp-validation-for="BookPrice" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">Book Qty</label>
+                    <div class="col-sm-9">
+                        <input asp-for="BookQty" class="form-control" />
+                        <span asp-validation-for="BookQty" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">Book Author</label>
+                    <div class="col-sm-9">
+                        <input asp-for="BookAuthor" class="form-control" />
+                        <span asp-validation-for="BookAuthor" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">Book Image</label>
+                    <div class="col-sm-9">
+                        @*<input asp-for="BookImage" class="form-control" />
+                    <span asp-validation-for="BookImage" class="text-danger"></span>*@
+                        <input asp-for="ImageFile" accept="image/*" class="form-control" />
+                        <span asp-validation-for="ImageFile" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">Book Desc</label>
+                    <div class="col-sm-9">
+                        <input asp-for="BookDesc" class="form-control" />
+                        <span asp-validation-for="BookDesc" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer bg-white">
+                <button type="submit" class="btn btn-success">Update</button>
+                <button type="button" class="btn btn-info float-right"  onclick="window.location.href='/ManageBooks'">Back to List</button>
+            </div>
+            <!-- /.card-footer -->
+        </form>
+    </div>
+    <!-- /.card -->
+
+
+    </div>
+    <div class="col-md-3"></div>
+</div>
+ 
+
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

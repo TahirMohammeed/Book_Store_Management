@@ -1,0 +1,49 @@
+﻿@model Book_Store.Models.Category
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<br />
+<div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <div>
+                <!-- /.card -->
+                <!-- Horizontal Form -->
+                <div class="card card-danger">
+                    <div class="card-header">
+                        <h3 class="card-title">Delete Category</h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body">
+                        <dl>
+                            <dt>
+                                @Html.DisplayNameFor(model => model.CategoryId)
+                            </dt>
+                            <dd>
+                                @Html.DisplayFor(model => model.CategoryId)
+                            </dd>
+                            <dt>
+                                @Html.DisplayNameFor(model => model.CategoryName)
+                            </dt>
+                            <dd>
+                                @Html.DisplayFor(model => model.CategoryName)
+                            </dd>
+                        </dl>
+
+                        <form asp-action="Delete">
+                            <input type="hidden" asp-for="CategoryId" />
+                            <input type="submit" value="Delete" class="btn btn-sm btn-danger" />
+                            <a asp-action="Index" class="btn btn-sm btn-info">Back to List</a>
+                        </form>
+                    </div>
+
+                    <!-- /.card-footer -->
+
+                </div>
+                <!-- /.card -->
+            </div>
+        </div>
+        <div class="col-md-3"></div>
+ </div>

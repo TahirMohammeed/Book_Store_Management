@@ -1,0 +1,55 @@
+﻿@model IEnumerable<Book_Store.Models.Category>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="card">
+    <div class="card-body">
+        <h3 class="mb-3">Categories List</h3>
+
+<p class="mb-3">
+    <a asp-action="Create" class="btn btn-success btn-sm">Create New</a>
+</p>
+<table class="table bg-white table-bordered table-hover" id="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CategoryName)
+            </th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CategoryName)
+            </td>
+            <td>
+                <a asp-action="Edit"   asp-route-id="@item.CategoryId" class="btn btn-sm btn-primary">Edit</a>
+                <a asp-action="Details" asp-route-id="@item.CategoryId"  class="btn btn-sm btn-info">Details</a>
+                <a asp-action="Delete"  asp-route-id="@item.CategoryId" class="btn btn-sm btn-danger">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+    </div>
+</div>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script>$(function () {
+    $("#table").DataTable({
+      "responsive": true,
+        "autoWidth": false,
+        'columnDefs': [{
+
+            'targets': [1], 
+
+            'orderable': false, 
+
+        }]
+    });
+   
+  });</script>

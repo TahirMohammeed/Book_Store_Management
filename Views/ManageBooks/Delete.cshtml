@@ -1,0 +1,79 @@
+﻿@model Book_Store.Models.Book
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<br />
+<div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+        <div>
+            
+            <div class="card card-danger">
+                <div class="card-header">
+                    <h3 class="card-title">Delete Book</h3>
+                </div>
+                
+                <div class="card-body">
+                    <dl>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.BookName)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.BookName)
+                        </dd>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.BookPrice)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.BookPrice)$
+                        </dd>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.BookQty)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.BookQty)
+                        </dd>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.BookAuthor)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.BookAuthor)
+                        </dd>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.BookImage)
+                        </dt>
+                        <dd>
+                            <img src="~/images/uploads/bookImages/@Model.BookImage" style="width:50px;height:50px" />
+                        </dd>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.BookDesc)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.BookDesc)
+                        </dd>
+                        <dt>
+                            Category
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.FkCategory.CategoryName)
+                        </dd>
+                    </dl>
+
+                 <form asp-action="Delete">
+                    <input type="hidden" asp-for="BookId" />
+                    <input type="submit" value="Delete" class="btn btn-danger btn-sm" /> 
+                    <a asp-action="Index" class="btn btn-sm btn-info">Back to List</a>
+                </form>
+                </div>
+
+               
+
+            </div>
+           
+        </div>
+    </div>
+    <div class="col-md-3"></div>
+</div>
+

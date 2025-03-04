@@ -1,0 +1,51 @@
+﻿@model Book_Store.Models.Category
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<br/>
+<div class="row">
+    <div class="col-md-3"></div>
+    <!-- /.card -->
+    <!-- Horizontal Form -->
+    <div class="col-md-6">
+           <div class="card card-success">
+        <div class="card-header">
+            <h3 class="card-title">Add Category</h3>
+        </div>
+        <!-- /.card-header -->
+        <!-- form start -->
+        <form class="form-horizontal" asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="card-body">
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">Category Name</label>
+                    <div class="col-sm-9">
+                        <input type="text" asp-for="CategoryName" class="form-control"  placeholder="Enter Category Name">
+                        <span asp-validation-for="CategoryName" class="text-danger"></span>
+
+                    </div>
+                </div>
+               
+             
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer bg-white">
+                <button type="submit" class="btn btn-success">Save</button>
+                <button type="button" href="Index" class="btn btn-info float-right" onclick="window.location.href='/ManageCategories'">Back to List</button>
+            </div>
+            <!-- /.card-footer -->
+        </form>
+    </div>
+    </div>
+ 
+    <!-- /.card -->
+    <div class="col-md-3"></div>
+</div>
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,111 @@
+﻿@model IEnumerable<Book_Store.Models.Book>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+
+<div class="card">
+    <div class="card-body">
+        <h3 class="mb-3">Books List</h3>
+
+<p class="mb-3">
+    <a asp-action="Create" class="btn btn-success btn-sm">Create New</a>
+</p>
+<table class="table table-hover" id="table-books">
+    <thead>
+        <tr>
+            <th>
+                @*@Html.DisplayNameFor(model => model.BookName)*@
+                Name
+            </th>
+            <th>
+                @*@Html.DisplayNameFor(model => model.BookPrice)*@
+                Price
+            </th>
+            <th>
+                @*@Html.DisplayNameFor(model => model.BookQty)*@
+                Qty
+            </th>
+            <th>
+                Author
+                @*@Html.DisplayNameFor(model => model.BookSize)*@
+            </th>
+           
+            <th>
+                Image
+                @*@Html.DisplayNameFor(model => model.BookImage)*@
+            </th>
+            <th>
+                @*@Html.DisplayNameFor(model => model.BookDesc)*@
+                Description
+            </th>
+            <th>
+                @*@Html.DisplayNameFor(model => model.FkCategory)*@
+                Category
+            </th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.BookName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BookPrice) $
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BookQty)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BookAuthor)
+            </td>
+           
+            <td>
+                <img src="~/images/uploads/bookImages/@item.BookImage" style="width:50px;height:50px"/>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BookDesc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FkCategory.CategoryName)
+            </td>
+            <td>
+                <span>
+                    <a asp-action="Edit" asp-route-id="@item.BookId" class="btn btn-sm btn-primary mt-1">Edit</a>
+                    <a asp-action="Details" asp-route-id="@item.BookId" class="btn btn-sm btn-info mt-1">Details</a>
+                    <a asp-action="Delete" asp-route-id="@item.BookId" class="btn btn-sm btn-danger mt-1">Delete</a>
+                </span>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
+
+    </div>
+</div>
+
+
+
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script>
+    $(function () {
+        $("#table-books").DataTable({
+            "responsive": true,
+            "autoWidth": false,
+            'columnDefs': [{
+
+                'targets': [7], /* column index */
+
+                'orderable': false, /* true or false */
+
+            }]
+        });
+
+    });</script>

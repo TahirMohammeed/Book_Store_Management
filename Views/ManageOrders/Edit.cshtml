@@ -1,0 +1,75 @@
+﻿@model Book_Store.Models.Order
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<br />
+<div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+          
+    <div class="card card-success">
+        <div class="card-header">
+            <h3 class="card-title">Edit Order Details</h3>
+        </div>
+       
+        <form class="form-horizontal" asp-action="Edit">
+            <input type="hidden" asp-for="OrderId" />
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="card-body">
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label" asp-for="FullName"></label>
+                    <div class="col-sm-9">
+                        <input type="text" asp-for="FullName" class="form-control" placeholder="Full Name">
+                        <span asp-validation-for="FullName" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label" asp-for="PhoneNumber"></label>
+                    <div class="col-sm-9">
+                        <input type="text" asp-for="PhoneNumber" class="form-control" placeholder="Phone Number">
+                        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label" asp-for="AddressDetail"></label>
+                    <div class="col-sm-9">
+                        <input type="text" asp-for="AddressDetail" class="form-control" placeholder="Address Detail">
+                        <span asp-validation-for="AddressDetail" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label" asp-for="OrderStatus"></label>
+                    <div class="col-sm-9">
+                        <select asp-for="OrderStatus" class="form-control">
+                            <option value="0">Received</option>
+                            <option value="1">Processing</option>
+                            <option value="2">Shipped</option>
+                            <option value="3">Cancelled</option>
+                            <option value="4">Completed</option>
+                        </select>
+                        <span asp-validation-for="OrderStatus" class="text-danger"></span>
+                    </div>
+                </div>
+
+
+            </div>
+            
+            <div class="card-footer bg-white">
+                <button type="submit" class="btn btn-success">Update</button>
+
+              <button type="button" href="Index" class="btn btn-info float-right" onclick="window.location.href='/ManageOrders'">Back to List</button>
+            </div>
+           
+        </form>
+    </div>
+    
+    </div>
+
+    <div class="col-md-3"></div>
+</div>
